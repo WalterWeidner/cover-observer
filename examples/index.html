@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Examples</title>
+
+		<style>
+			body {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				min-height: 100vh;
+				margin: 0;
+			}
+			.Box {
+				background-color: hsl(161, 58%, 50%);
+				border-radius: 10px;
+				height: 100px;
+				margin: 10px;
+				width: 100px;
+			}
+			.Box--covered {
+				background-color: hsl(0, 58%, 50%);
+			}
+			.DraggableBox {
+				background-color: hsl(0 0% 88% / 1);
+				cursor: grab;
+				height: 50px;
+				position: absolute;
+				width: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="SiteHeader"></header>
+		<article class="SiteContent">
+			<div class="Box" id="elementToObserve"></div>
+			<div class="DraggableBox" id="elementToDrag1"></div>
+			<div class="DraggableBox" id="elementToDrag2"></div>
+		</article>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/DragDrop/0.3.0/drag-drop.min.js" integrity="sha512-OznEI5fIywqgu6KynoFG+h6lY8Ja/L4CCz2MSFVN92SjbNcTFfUy1x6yi/cLfL9bpawF6ajQ/IiraFPS9haP/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<script type="module">
+			import { CoverObserver } from '../src';
+
+			const elementToObserve = document.getElementById('elementToObserve');
+
+			const observer = new CoverObserver(({ covered }) => {
+				elementToObserve.classList.toggle('Box--covered', covered);
+			});
+			observer.observe(elementToObserve);
+		</script>
+
+		<script>
+			const elementToDrag1 = document.getElementById('elementToDrag1');
+			const elementToDrag2 = document.getElementById('elementToDrag2');
+			DragDrop.bind(elementToDrag1);
+			DragDrop.bind(elementToDrag2);
+		</script>
+	</body>
+</html>
