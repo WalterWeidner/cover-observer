@@ -1,0 +1,27 @@
+{
+  "author": "Walter Weidner <weidner.walter@gmail.com>",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@parcel/packager-ts": "2.3.1",
+    "@parcel/transformer-typescript-types": "2.3.1",
+    "jest": "^27.5.1",
+    "parcel": "^2.3.1",
+    "typescript": "^4.5.5"
+  },
+  "license": "MIT",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "name": "cover-observer",
+  "repository": "git@github.com:WalterWeidner/cover-observer.git",
+  "scripts": {
+    "build": "parcel build",
+    "dev": "parcel serve examples/index.html --dist-dir examples-dist/",
+    "test": "jest",
+    "types": "tsc --noEmit",
+    "watch": "parcel watch"
+  },
+  "source": "src/index.ts",
+  "version": "0.1.0"
+}
